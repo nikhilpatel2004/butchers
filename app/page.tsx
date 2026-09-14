@@ -40,6 +40,19 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="image-story" aria-label="The Bakerly bakery gallery">
+        <div className="image-story-heading"><p className="eyebrow"><span className="eyebrow-line" /> From our kitchen</p><h2>A table full<br /><em>of good things.</em></h2></div>
+        <div className="image-mosaic">
+          <div className="mosaic-image mosaic-wide" role="img" aria-label="Freshly baked bread and pastries" />
+          <div className="mosaic-image mosaic-tall" role="img" aria-label="Coffee and pastries served fresh" />
+          <div className="mosaic-image mosaic-small" role="img" aria-label="Golden croissants and baked goods" />
+        </div>
+      </section>
+
+      <section className="promise-strip">
+        <span>Freshly baked daily</span><span>Premium ingredients</span><span>No shortcuts, ever</span><span>Made with love</span>
+      </section>
+
       <section className="collection-section" id="menu">
         <div className="collection-header"><p className="eyebrow">Today at The Bakerly</p><a href="#visit">Visit us <ArrowUpRight size={15} /></a></div>
         <div className="collection-card">

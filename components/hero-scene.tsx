@@ -45,7 +45,7 @@ export function HeroScene() {
       <Canvas camera={{ position: [0, 0, 4.6], fov: 36 }} dpr={[1, 1.5]}>
         <ambientLight intensity={0.35} />
         <directionalLight position={[3, 3, 4]} intensity={2.2} color="#f7ffe2" />
-        <pointLight position={[-3, -2, 1]} intensity={10} distance={7} color="#b8e62a" />
+        <pointLight position={[-3, -2, 1]} intensity={7} distance={7} color="#d96f35" />
         <Orb />
         <Sparkles count={70} scale={5.4} size={1.1} speed={0.2} color="#e7a35f" opacity={0.5} />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
