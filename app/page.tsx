@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowRight, Heart, MapPin, Menu, Search, ShoppingBag, Wheat, X } from 'lucide-react'
 
 const bakeryImage = '/bakery-hero.png'
@@ -28,6 +28,16 @@ export default function Page() {
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null)
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [cursor, setCursor] = useState({ x: -100, y: -100, label: 'fresh' })
+
+  useEffect(() => {
+    const moveCursor = (event: MouseEvent) => {
+      const target = event.target as HTMLElement
+      setCursor({ x: event.clientX, y: event.clientY, label: target.closest('a, button, article')?.getAttribute('data-cursor') || 'fresh' })
+    }
+    window.addEventListener('mousemove', moveCursor)
+    return () => window.removeEventListener('mousemove', moveCursor)
+  }, [])
 
   function subscribe(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -36,8 +46,9 @@ export default function Page() {
 
   return (
     <main className="bakery-site">
+      <div className={`bakery-cursor ${cursor.label !== 'fresh' ? 'is-active' : ''}`} style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }} aria-hidden="true"><Wheat size={17} /><span>{cursor.label}</span></div>
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="The Butcher's Table home"><Wheat size={28} strokeWidth={1.4} /><span>The<br /><strong>Butcher&apos;s Table</strong></span></a>
+        <a data-cursor="home" className="brand" href="#top" aria-label="The Butcher's Table home"><Wheat size={28} strokeWidth={1.4} /><span>The<br /><strong>Butcher&apos;s Table</strong></span></a>
         <nav className={menuOpen ? 'main-nav open' : 'main-nav'} aria-label="Primary navigation">
           {['Home', 'Products', 'Our Story', 'Locations', 'Contact'].map((item) => <a key={item} href={`#${item === 'Home' ? 'top' : item.toLowerCase().replace(' ', '-')}`} onClick={() => setMenuOpen(false)}>{item}</a>)}
         </nav>
@@ -53,7 +64,7 @@ export default function Page() {
 
       <div className="promise-bar"><span><Wheat /> Freshly Baked Daily</span><i /><span>♨ Premium Ingredients</span><i /><span>◌ No Artificial Preservatives</span><i /><span><Heart fill="currentColor" /> Made with Love</span></div>
 
-      <section className="cream-section products-section" id="products"><div className="section-heading centered"><p className="kicker">Our favourites</p><h2>Not just bread, but<br /><em>little moments of joy</em></h2></div><div className="product-grid">{products.map((product, index) => <article className="product-card" key={product.name} tabIndex={0} onClick={() => setSelectedProduct(product.name)} onKeyDown={(event) => event.key === 'Enter' && setSelectedProduct(product.name)}><div className="product-photo" style={{ backgroundImage: `url(${productImage})`, backgroundPosition: index === 0 ? '0% 0%' : index === 1 ? '100% 0%' : index === 2 ? '0% 100%' : '100% 100%' }} /><h3>{product.name}</h3><p>{product.price}</p><div className="stars" aria-label="5 out of 5 stars">★★★★★</div><button className="add-button" onClick={(event) => { event.stopPropagation(); setBagCount((count) => count + 1) }}>Add to bag</button></article>)}</div><a className="pill-button dark" href="#menu">View All Products <ArrowRight size={16} /></a></section>
+      <section className="cream-section products-section" id="products"><div className="section-heading centered"><p className="kicker">Our favourites</p><h2>Not just bread, but<br /><em>little moments of joy</em></h2></div><div className="product-grid">{products.map((product, index) => <article data-cursor="taste" className="product-card" key={product.name} tabIndex={0} onClick={() => setSelectedProduct(product.name)} onKeyDown={(event) => event.key === 'Enter' && setSelectedProduct(product.name)}><div className="product-photo" style={{ backgroundImage: `url(${productImage})`, backgroundPosition: index === 0 ? '0% 0%' : index === 1 ? '100% 0%' : index === 2 ? '0% 100%' : '100% 100%' }} /><h3>{product.name}</h3><p>{product.price}</p><div className="stars" aria-label="5 out of 5 stars">★★★★★</div><button className="add-button" onClick={(event) => { event.stopPropagation(); setBagCount((count) => count + 1) }}>Add to bag</button></article>)}</div><a className="pill-button dark" href="#menu">View All Products <ArrowRight size={16} /></a></section>
 
       <section className="story-section" id="our-story"><div className="story-copy"><p className="kicker">Our story</p><h2>Everyone&apos;s<br />welcome at<br /><em>our table</em></h2><p>We started The Butcher&apos;s Table with a simple belief — good food brings people together. From our kitchen to your table, every bite is made with fresh ingredients, care and love.</p><a className="pill-button light" href="#locations">Our Story <ArrowRight size={16} /></a></div><div className="story-photo" style={{ backgroundImage: `url(${bakeryImage})` }} /><div className="story-note">Real Ingredients<br /><em>Better Moments</em></div></section>
 
