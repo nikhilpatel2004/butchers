@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'The Bakerly — Slow baked. Made joyful.',
-  description: 'Warm bread, golden pastries, and small moments worth gathering around.',
+  title: "The Butcher's Table — Freshly Baked Happiness",
+  description: 'Handcrafted breads, pastries, and little moments of joy, made fresh every day.',
   generator: 'v0.app',
   icons: {
     icon: [
