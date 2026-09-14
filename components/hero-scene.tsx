@@ -18,21 +18,21 @@ function Orb() {
 
   return (
     <Float speed={1.4} rotationIntensity={0.25} floatIntensity={0.6}>
-      <mesh ref={mesh} scale={1.38}>
+      <mesh ref={mesh} scale={0.82}>
         <icosahedronGeometry args={[1, 4]} />
         <MeshTransmissionMaterial
           backside
           samples={4}
-          thickness={0.45}
-          chromaticAberration={0.06}
-          anisotropy={0.2}
-          distortion={0.22}
-          distortionScale={0.3}
-          temporalDistortion={0.12}
-          color="#d5ff39"
-          roughness={0.12}
-          transmission={0.96}
-          ior={1.2}
+          thickness={0.2}
+          chromaticAberration={0.04}
+          anisotropy={0.15}
+          distortion={0.12}
+          distortionScale={0.2}
+          temporalDistortion={0.08}
+          color="#e7a35f"
+          roughness={0.2}
+          transmission={0.78}
+          ior={1.15}
         />
       </mesh>
     </Float>
@@ -47,7 +47,7 @@ export function HeroScene() {
         <directionalLight position={[3, 3, 4]} intensity={2.2} color="#f7ffe2" />
         <pointLight position={[-3, -2, 1]} intensity={10} distance={7} color="#b8e62a" />
         <Orb />
-        <Sparkles count={70} scale={5.4} size={1.1} speed={0.2} color="#d5ff39" opacity={0.5} />
+        <Sparkles count={70} scale={5.4} size={1.1} speed={0.2} color="#e7a35f" opacity={0.5} />
         <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
       </Canvas>
     </div>

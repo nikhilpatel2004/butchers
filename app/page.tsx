@@ -1,59 +1,55 @@
 import { ArrowUpRight, Menu, Move3d } from 'lucide-react'
 import { HeroScene } from '@/components/hero-scene'
 
-const navItems = ['Shop', 'About', 'Journal']
+const navItems = ['Menu', 'Our story', 'Visit']
 
 export default function Page() {
   return (
     <main className="site-shell">
-      <div className="ambient-glow ambient-glow-top" />
-      <div className="ambient-glow ambient-glow-bottom" />
-
+      <div className="grain" aria-hidden="true" />
       <nav className="topbar" aria-label="Main navigation">
-        <a className="wordmark" href="#top" aria-label="Astra home">
-          <span className="wordmark-mark">A</span>
-          <span>ASTRA<span className="wordmark-dot">.</span></span>
+        <a className="wordmark" href="#top" aria-label="The Bakerly home">
+          <span className="wordmark-mark">B</span>
+          <span>THE BAKERLY<span className="wordmark-dot">.</span></span>
         </a>
         <div className="nav-links">
-          {navItems.map((item) => <a href={`#${item.toLowerCase()}`} key={item}>{item}</a>)}
+          {navItems.map((item) => <a href={`#${item.toLowerCase().replace(' ', '-')}`} key={item}>{item}</a>)}
         </div>
         <button className="menu-button" aria-label="Open menu"><Menu size={19} strokeWidth={1.5} /></button>
       </nav>
 
       <section className="hero" id="top">
+        <div className="hero-image" role="img" aria-label="Freshly baked pastries, bread, and coffee" />
+        <div className="hero-overlay" />
         <div className="hero-copy">
-          <p className="eyebrow"><span className="eyebrow-line" /> Independent objects for considered spaces</p>
-          <h1>Make space<br /><em>for wonder.</em></h1>
-          <p className="hero-description">Curated objects with a point of view. Designed to bring a little more feeling into the everyday.</p>
-          <a className="primary-button" href="#shop">Explore collection <ArrowUpRight size={17} strokeWidth={1.7} /></a>
+          <p className="eyebrow"><span className="eyebrow-line" /> Fresh from the oven, every morning</p>
+          <h1>Slow baked.<br /><em>Made joyful.</em></h1>
+          <p className="hero-description">Warm bread, golden pastries, and small moments worth gathering around.</p>
+          <a className="primary-button" href="#menu">Discover the menu <ArrowUpRight size={17} strokeWidth={1.7} /></a>
         </div>
         <HeroScene />
-        <div className="hero-aside" aria-hidden="true">
-          <span className="aside-label">SCROLL TO DISCOVER</span>
-          <span className="aside-line" />
-          <span className="aside-index">01 / 03</span>
-        </div>
+        <div className="hero-aside" aria-hidden="true"><span className="aside-label">BAKED WITH PATIENCE</span><span className="aside-line" /><span className="aside-index">01 / 01</span></div>
         <div className="hero-corner-note"><Move3d size={14} /> Move your cursor</div>
       </section>
 
-      <section className="intro-section" id="about">
-        <p className="eyebrow"><span className="eyebrow-line" /> The Astra edit</p>
+      <section className="intro-section" id="our-story">
+        <p className="eyebrow"><span className="eyebrow-line" /> A little bakery with a big heart</p>
         <div className="intro-grid">
-          <h2>Objects that<br /><em>change the room.</em></h2>
-          <p>We believe the things around us should do more than fill a space. They should make us pause, smile, and see the familiar differently.</p>
+          <h2>Good bread<br /><em>brings us closer.</em></h2>
+          <p>We bake slowly, source thoughtfully, and leave room for the best part: sharing something warm with someone you love.</p>
         </div>
       </section>
 
-      <section className="collection-section" id="shop">
-        <div className="collection-header"><p className="eyebrow">01 — Featured objects</p><a href="#journal">View all <ArrowUpRight size={15} /></a></div>
+      <section className="collection-section" id="menu">
+        <div className="collection-header"><p className="eyebrow">Today at The Bakerly</p><a href="#visit">Visit us <ArrowUpRight size={15} /></a></div>
         <div className="collection-card">
-          <div className="card-meta"><span>01 / 03</span><span>New form, familiar feeling</span></div>
+          <div className="card-meta"><span>01 / Daily special</span><span>Honey butter croissant</span></div>
           <div className="card-orb" aria-hidden="true" />
-          <div className="card-copy"><p className="eyebrow">The Halo vessel</p><h3>Quietly<br />extraordinary.</h3><span>$128.00</span></div>
+          <div className="card-copy"><p className="eyebrow">Freshly laminated</p><h3>Golden<br />by nature.</h3><span>Made daily · 8:00 am</span></div>
         </div>
       </section>
 
-      <footer className="footer" id="journal"><span>ASTRA<span className="wordmark-dot">.</span></span><span>© 2026 — Made for wonder</span><span>Instagram&nbsp;&nbsp; / &nbsp;&nbsp;Contact</span></footer>
+      <footer className="footer" id="visit"><span>THE BAKERLY<span className="wordmark-dot">.</span></span><span>© 2026 — baked with love</span><span>Instagram&nbsp;&nbsp; / &nbsp;&nbsp;Find us</span></footer>
     </main>
   )
 }

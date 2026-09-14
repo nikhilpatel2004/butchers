@@ -3,8 +3,8 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Astra — Make space for wonder',
-  description: 'Independent objects for considered spaces.',
+  title: 'The Bakerly — Slow baked. Made joyful.',
+  description: 'Warm bread, golden pastries, and small moments worth gathering around.',
   generator: 'v0.app',
   icons: {
     icon: [
